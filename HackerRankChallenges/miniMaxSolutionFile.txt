@@ -1,0 +1,21 @@
+{
+        //make a list of longs because the solution must be in long format,
+        //im going to work in longs from the start
+        List<long> long_arr = new List<long>();
+        
+        //copy the passed int array into our long array
+        foreach(int i in arr)
+        {
+            long_arr.Add(i);
+        }
+        
+        //to get the max and min sum of any four elements, calculate the total sum.
+        //Subtract it from the minimum for the max sum. Do the same thing,
+        //for the min sum, but subtracting maximum this time.
+        long sum = long_arr.Sum();
+        long min = long_arr.Min();
+        long max = long_arr.Max();
+        
+        //Output the solution in the format specified.
+        Console.WriteLine((sum - max) + " " + (sum - min));
+    }
