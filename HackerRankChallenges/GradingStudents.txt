@@ -1,0 +1,35 @@
+   public static List<int> gradingStudents(List<int> grades)
+    {
+        List<int> rounded_grades = new List<int>();
+        int size = grades[0];//I didnt end up needing this variable.
+        foreach (int g in grades)
+        {
+            //for failing grades
+            if(g < 38)//since grades up to 38 can be rounded to 40, 
+            //check if grade is less than 38 instead of 40
+            {
+                rounded_grades.Add(g);//simply add it to the return array.
+                continue;//no rounding. continue to the next.
+            }
+            
+            //for passing grades
+            else if(g >= 38 && ((g + 1) % 5) == 0)//if one more than the grade is
+            //divisible by 5, round it up
+            {
+                rounded_grades.Add(g + 1);//add the rounded up number
+            }
+            
+            else if(g >= 38 && ((g + 2) % 5) == 0)//if two more than the grade is
+            //divisible by 5, round it up.
+            {
+                rounded_grades.Add(g + 2);//add the rounded up number
+            }
+            
+            else rounded_grades.Add(g);//if 3 more than the grade is divisible by 5,
+            //it is too low to round it up. Simply add it as is.
+        }
+        
+        return rounded_grades;//return list of all the rounded grades.
+    }
+
+}
