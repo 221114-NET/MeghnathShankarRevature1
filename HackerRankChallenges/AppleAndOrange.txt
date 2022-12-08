@@ -1,0 +1,85 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Result
+{
+
+    /*
+     * Complete the 'countApplesAndOranges' function below.
+     *
+     * The function accepts following parameters:
+     *  1. INTEGER s
+     *  2. INTEGER t
+     *  3. INTEGER a
+     *  4. INTEGER b
+     *  5. INTEGER_ARRAY apples
+     *  6. INTEGER_ARRAY oranges
+     */
+
+    public static void countApplesAndOranges(int s, int t, int a, int b, List<int> apples, List<int> oranges)
+    {
+        //more descriptive variable names to avoid confusion
+        //these are sam's house parameters
+        int sams_house_starting_point = s;
+        int sams_house_ending_point = t;
+        
+        //these are the tree's locations
+        int apple_tree_location = a;//
+        int orange_tree_location = b;
+        
+        //they didnt pass m and n for counts of apples and oranges. So I am manually      calculating them. *Note it says number of fruits fallen. 
+        //The number on the tree does not matter for this challenge*
+        int number_of_apples = apples.Count();//number of apples fallen
+        int number_of_oranges = oranges.Count();//number of oranges fallen
+        
+        //these are our return values. We need to calculate number of fruit landing
+        //on Sams house.
+        int apples_on_sams_house = 0;//number of apples landing on Sams house
+        int oranges_on_sams_house = 0;//number of oranges on sams house
+        
+        foreach(int apple_fallen_distance in apples)//for every fallen apple,
+        {
+            //where it fell is equal to the distance it landed from the tree.
+            int apple_location = apple_fallen_distance + apple_tree_location;
+            //adding the distance works, because negative numbers are accounted for in the problem constraints. Only positive numbers will cause the apple to go closer to sams house.
+            //We check both endpoints of the house to make sure the apple didnt go flying.
+            if(apple_location >= sams_house_starting_point && apple_location <= sams_house_ending_point)//if it has landed on the house
+            {
+                apples_on_sams_house += 1;//add 1 to the number of apples fell on Sams house
+            }
+        }
+        
+        //do the same thing for oranges
+        foreach(int orange_fallen_distance in oranges)
+        {
+            //the location the orange landed
+            int orange_location = orange_fallen_distance + orange_tree_location;
+            
+            //here negative distances will make it land closer to the house.
+            //It does not matter because adding negative numbers is the same
+            //as sutracting.
+            if(orange_location <= sams_house_ending_point && orange_location >= sams_house_starting_point)
+            {
+                oranges_on_sams_house += 1;//add one orange if it has fallen
+            }
+        }
+        
+        //Printing my results
+        Console.WriteLine(apples_on_sams_house);
+        Console.WriteLine(oranges_on_sams_house);
+    }
+
+}
+
+
