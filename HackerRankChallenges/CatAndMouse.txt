@@ -1,0 +1,32 @@
+
+    // Complete the catAndMouse function below.
+    static string catAndMouse(int x, int y, int z) {
+
+        //more descriptive variable names so I can know what I am working with
+        int cat_a_position = x;
+        int cat_b_position = y;
+        int mouse_position = z;
+        
+        //calculate the distance of each cat to the mouse, with absolute value
+        int cat_a_distance = Math.Abs(cat_a_position-mouse_position);
+        int cat_b_distance = Math.Abs(cat_b_position-mouse_position);
+        //use absolute value to determine if one cat is ahead but still closer
+        
+        //if Cat A is further away,
+        if(cat_a_distance > cat_b_distance)
+        {
+            return "Cat B";//Then Cat B is closer.
+        }
+        
+        //If Cat B is further away,
+        else if(cat_b_distance > cat_a_distance)
+        {
+            return "Cat A";//Then Cat A is closer.
+        }
+        
+        //Else they are both the same distance away.
+        else
+        {
+            return "Mouse C";//Return Mouse C because it was allowed to get away.
+        }
+    }
