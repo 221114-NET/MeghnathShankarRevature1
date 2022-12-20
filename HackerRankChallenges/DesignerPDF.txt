@@ -1,0 +1,22 @@
+    public static int designerPdfViewer(List<int> h, string word)
+    {
+        
+        int char_c_as_int = 0;//integer representation of every char c in the word string
+        int h_value = 0;//the value of the int in array h at position 'char_c_as_int'
+        int h_value_max = 0;//the maximum value of all calculated h values.
+        //h_value_max will be used in the final calculation.
+        
+        foreach(char c in word)//iterating through every char in the word string,
+        {
+            //subtract the ASCII value of the char from the ASCII value of 'a'
+            //so if char c == a, then char_c_as_int value would be 0.
+            char_c_as_int = c - 97;//calculating the integer representation
+            
+            h_value = h[char_c_as_int];//get the h value at the int value of c.
+            h_value_max = Math.Max(h_value, h_value_max);//compare to the current max.
+        }
+        
+        //at this point, we will have the true h_max value. Multiply it 
+        //by the word length and return, then done.
+        return h_value_max * word.Length;
+    }
