@@ -1,0 +1,25 @@
+    public static string angryProfessor(int k, List<int> a)
+    {
+        //keeping track of the number of stuedents on time
+        int num_not_late = 0;
+        int threshold = k;//renaming k to a descriptive name, "threshold"
+        List<int> student_arrival_times = a;
+        foreach(int time in student_arrival_times)//iterating through the students array of time arrivals
+        {
+            
+            if(time <= 0)//if the arrival time is less than 0
+            {
+                num_not_late++;
+            }
+        }
+        //for total number on time, if it meets the threshold k,
+        if(num_not_late >= threshold)
+        {
+            return "NO";//do not cancel class.
+        }
+        
+        else//or else,
+        {
+            return "YES";//cancel class
+        }
+    }
